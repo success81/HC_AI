@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Position Description Results</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css" rel="stylesheet">
+    <style>
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 45px;
+        }
+        @media (max-width: 767px) {
+            .markdown-body {
+                padding: 15px;
+            }
+        }
+        .copy-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #48BB78;
+            color: white;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="copy-notification" id="copyNotification">
+        Content copied to clipboard!
+    </div>
+
+    <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
+        <div class="mb-4 flex justify-between items-center">
+            <h1 class="text-3xl font-bold">Position Description</h1>
+            <div class="space-x-4">
+                <button onclick="copyContent()" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+                    Copy Content
+                </button>
+                <a href="/" class="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600">
+                    Create New
+                </a>
+            </div>
+        </div>
+        
+        <!-- Hidden div containing the raw markdown for copying -->
+        <div id="markdown-content" class="hidden">{{ markdown_content }}</div>
+        
+        <!-- Rendered HTML content -->
+        <div class="markdown-body prose max-w-none" id="rendered-content">
+            {{ results|safe }}
+        </div>
+    </div>
+
+    <script>
+        function copyContent() {
+            const content = document.getElementById('markdown-content').innerText;
+            navigator.clipboard.writeText(content).then(() => {
+                // Show notification
+                const notification = document.getElementById('copyNotification');
+                notification.style.display = 'block';
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                alert('Failed to copy content. Please try again.');
+            });
+        }
+    </script>
+</body>
+</html>

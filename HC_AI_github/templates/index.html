@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HC AI Position Builder</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
+        <h1 class="text-3xl font-bold mb-8 text-center">HC AI Position Builder</h1>
+        
+        <form action="/process" method="post" enctype="multipart/form-data" class="space-y-6">
+            <!-- Position Type -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Position Type</label>
+                <select name="supervisor_type" class="w-full p-2 border rounded" required>
+                    <option value="supervisor">Supervisor</option>
+                    <option value="non_supervisor">Non-Supervisor</option>
+                </select>
+            </div>
+
+            <!-- PDF Upload -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Upload Position Description PDF</label>
+                <input type="file" name="pdf_file" accept=".pdf" class="w-full p-2 border rounded" required>
+            </div>
+
+            <!-- General Description -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">General Position Description</label>
+                <p class="text-sm text-gray-600 mb-2">Enter tasks with percentages (e.g., "30% hardware, 20% software")</p>
+                <textarea name="general_description" rows="4" class="w-full p-2 border rounded"></textarea>
+            </div>
+
+            <!-- Knowledge Required -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Knowledge Required by the Position</label>
+                <textarea name="knowledge_required" rows="4" class="w-full p-2 border rounded" 
+                    placeholder="Enter knowledge requirements..."></textarea>
+            </div>
+
+            <!-- Supervisory Controls -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Supervisory Controls</label>
+                <textarea name="supervisory_controls" rows="4" class="w-full p-2 border rounded" 
+                    placeholder="Enter supervisory controls..."></textarea>
+            </div>
+
+            <!-- Guidelines -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Guidelines</label>
+                <textarea name="guidelines" rows="4" class="w-full p-2 border rounded" 
+                    placeholder="Enter guidelines..."></textarea>
+            </div>
+
+            <!-- Scope and Effect -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Scope and Effect</label>
+                <textarea name="scope_and_effect" rows="4" class="w-full p-2 border rounded" 
+                    placeholder="Enter scope and effect..."></textarea>
+            </div>
+
+            <!-- Personal Contacts -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Personal Contacts and Factor</label>
+                <textarea name="personal_contacts" rows="4" class="w-full p-2 border rounded" 
+                    placeholder="Enter personal contacts information..."></textarea>
+            </div>
+
+            <!-- Physical Demands -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Physical Demands</label>
+                <textarea name="physical_demands" rows="4" class="w-full p-2 border rounded" 
+                    placeholder="Enter physical demands..."></textarea>
+            </div>
+
+            <!-- Work Environment -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Work Environment</label>
+                <textarea name="work_environment" rows="4" class="w-full p-2 border rounded" 
+                    placeholder="Enter work environment details..."></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+                Generate Position Description
+            </button>
+        </form>
+    </div>
+</body>
+</html>
